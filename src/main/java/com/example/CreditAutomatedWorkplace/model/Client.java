@@ -36,5 +36,4 @@ public class Client {
 
     @Column(name = "credit_amount")
     private Long creditAmount;
-
 }
