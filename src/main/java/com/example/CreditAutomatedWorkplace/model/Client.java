@@ -20,7 +20,7 @@ public class Client {
     @Column(name = "full_name")
     private String fullName;
 
-    @Column(name = "passport_data")
+    @Column(name = "passport_data", length = 10)
     private String passportData;
 
     @Column(name = "marital_status")
@@ -28,6 +28,7 @@ public class Client {
 
     private String address;
 
+    @Column(length = 20)
     private String phone;
 
     @Column(name = "employment_info")

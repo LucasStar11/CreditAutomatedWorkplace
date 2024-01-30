@@ -22,4 +22,6 @@ public class CreditApplication {
     private Client client;
     @Column(name = "approved_amount")
     private Long approvedAmount;
+    @Column(name = "credit_period")
+    private Long creditPeriod;
 }
