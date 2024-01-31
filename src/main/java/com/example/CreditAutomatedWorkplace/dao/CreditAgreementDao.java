@@ -25,12 +25,13 @@ public class CreditAgreementDao {
         return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(CreditAgreement.class, id);
     }
 
-    public void saveCreditAgreement(CreditAgreement CreditAgreement){
+    public Long saveCreditAgreement(CreditAgreement creditAgreement){
         Session session = hibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction =  session.beginTransaction();
-        session.persist(CreditAgreement);
+        session.persist(creditAgreement);
         transaction.commit();
         session.close();
+        return creditAgreement.getId();
     }
 
     public List<CreditAgreement> findAll() {
@@ -41,7 +42,7 @@ public class CreditAgreementDao {
         return creditAgreements;
     }
 
-    public void updateCreditAgreement(Long Id, String status){
+    public void updateCreditAgreementStatus(Long Id, String status){
         Session session = hibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction =  session.beginTransaction();
         session.createQuery("update CreditAgreement set status =:status where id=:id")

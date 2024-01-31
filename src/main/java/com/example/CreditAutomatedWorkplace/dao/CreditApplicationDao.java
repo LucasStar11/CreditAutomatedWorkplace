@@ -26,12 +26,13 @@ public class CreditApplicationDao {
         return hibernateSessionFactoryUtil.getSessionFactory().openSession().get(CreditApplication.class, id);
     }
 
-    public void saveCreditApplication(CreditApplication creditApplication){
+    public Long saveCreditApplication(CreditApplication creditApplication){
         Session session = hibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction =  session.beginTransaction();
         session.persist(creditApplication);
         transaction.commit();
         session.close();
+        return creditApplication.getId();
     }
 
     public List<CreditApplication> findAll() {
