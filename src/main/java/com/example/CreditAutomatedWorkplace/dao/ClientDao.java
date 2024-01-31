@@ -23,8 +23,7 @@ public class ClientDao {
         return hibernateSessionFactoryUtil.getSessionFactory().openSession().get(Client.class, id);
     }
 
-    public List<Client> findByFullNameOrPhoneOrPassport(String fullName, String phone, String passport)
-    {
+    public List<Client> findByFullNameAndPhoneAndPassport(String fullName, String phone, String passport) {
         List<Client> clients = hibernateSessionFactoryUtil.getSessionFactory()
                 .openSession()
                 .createQuery("from Client where phone like :phone and " +
@@ -37,12 +36,13 @@ public class ClientDao {
         return clients;
     }
 
-    public void saveClient(Client client){
+    public Long saveClient(Client client){
         Session session = hibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction =  session.beginTransaction();
         session.persist(client);
         transaction.commit();
         session.close();
+        return client.getId();
     }
 
     public List<Client> findAll() {
