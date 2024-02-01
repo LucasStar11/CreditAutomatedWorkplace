@@ -24,6 +24,7 @@ public class CreditAgreement {
     @JoinColumn(name = "credit_application_id")
     private CreditApplication creditApplication;
 
+    @Column(columnDefinition = "varchar(25) default 'Ожидает решения'")
     private String status;
 
     @UpdateTimestamp
