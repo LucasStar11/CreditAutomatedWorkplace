@@ -24,12 +24,12 @@ public class CreditApplicationController {
     }
 
     @GetMapping("/all-applications")
-    public ResponseEntity<List<CreditApplication>> getAllApplication(){
+    public ResponseEntity<List<CreditApplication>> findAllCreditApplications(){
         return ResponseEntity.ok(this.creditApplicationService.findAllCreditApplications());
     }
 
     @PostMapping("/add-application")
-    public ResponseEntity<CreditApplication> addApplication(@RequestBody CreditApplicationDto creditApplicationDto){
+    public ResponseEntity<CreditApplication> createCreditApplication(@RequestBody CreditApplicationDto creditApplicationDto){
         try {
             CreditApplication creditApplication = this.creditApplicationService.considerCreditApplication(creditApplicationDto);
             return new ResponseEntity(creditApplication, HttpStatus.CREATED);

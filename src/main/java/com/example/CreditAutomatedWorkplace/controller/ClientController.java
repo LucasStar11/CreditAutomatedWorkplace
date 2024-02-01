@@ -20,10 +20,10 @@ public class ClientController {
     }
 
     @GetMapping("/client-search")
-    public ResponseEntity<List<Client>> searchClient(@RequestParam(required = false) String fullname,
+    public ResponseEntity<List<Client>> searchClient(@RequestParam(required = false) String fullName,
                                                @RequestParam(required = false) String phone,
                                                @RequestParam(required = false) String passport){
-        List<Client> clients = this.clientService.searchClients(fullname,phone,passport);
+        List<Client> clients = this.clientService.searchClients(fullName,phone,passport);
         if(clients.isEmpty())
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         else
@@ -31,7 +31,7 @@ public class ClientController {
     }
 
     @GetMapping("/all-clients")
-    public ResponseEntity<List<Client>> allClient(){
+    public ResponseEntity<List<Client>> findAllClient(){
         return ResponseEntity.ok(this.clientService.findAllClients());
     }
 }

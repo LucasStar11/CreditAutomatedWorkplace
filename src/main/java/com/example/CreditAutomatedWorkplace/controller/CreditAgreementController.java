@@ -25,12 +25,12 @@ public class CreditAgreementController {
     }
 
     @GetMapping("/all-credit-agreements")
-    public ResponseEntity<List<CreditAgreement>> findAll(){
+    public ResponseEntity<List<CreditAgreement>> findAllCreditAgreements(){
         return ResponseEntity.ok(this.creditAgreementService.findAll());
     }
 
     @PostMapping("/add-credit-agreements")
-    public ResponseEntity<CreditAgreementDto> createCreditAgreementId(@RequestParam Long creditApplicationId){
+    public ResponseEntity<CreditAgreementDto> createCreditAgreement(@RequestParam Long creditApplicationId){
         try {
             CreditAgreementDto creditAgreementDto = this.creditAgreementService.createAgreementDto(creditApplicationId);
             return new ResponseEntity(creditAgreementDto, HttpStatus.CREATED);
