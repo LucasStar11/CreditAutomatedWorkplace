@@ -30,7 +30,7 @@ public class CreditAgreementController {
     }
 
     @PostMapping("/add-credit-agreements")
-    public ResponseEntity<CreditAgreementDto> createLoanContract(@RequestParam Long creditApplicationId){
+    public ResponseEntity<CreditAgreementDto> createCreditAgreementId(@RequestParam Long creditApplicationId){
         try {
             CreditAgreementDto creditAgreementDto = this.creditAgreementService.createAgreementDto(creditApplicationId);
             return new ResponseEntity(creditAgreementDto, HttpStatus.CREATED);
@@ -41,10 +41,10 @@ public class CreditAgreementController {
     }
 
     @PostMapping("/update-credit-agreements")
-    public ResponseEntity updateLoanContract(@RequestParam Long loanContractId,
+    public ResponseEntity updateCreditAgreementId(@RequestParam Long creditAgreementId,
                                              @RequestParam String status){
         try {
-            this.creditAgreementService.updateCreditAgreement(loanContractId,status);
+            this.creditAgreementService.updateCreditAgreement(creditAgreementId,status);
             return ResponseEntity.status(202).build();
         }
         catch(HibernateException e){
